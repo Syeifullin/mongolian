@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<head>
+  <title>Хөрвүүлэх</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link href="{{ asset('css/transCSS.css')}}" rel="stylesheet">
+  <link href="{{ asset('translate/style.css')}}" rel="stylesheet">
+  <link href="{{ asset('css/maxboot.css')}}" rel="stylesheet">
+  <script src="{{ asset('js/jquery-3.2.1.min.js')}}"></script>
+  <script src="{{ asset('js/ajaxjq.js')}}"></script>
+  <script src="{{ asset('js/maxbootstrap.js')}}"></script>
+   <script src="{{ asset('js/maxbootstrap.js')}}"></script>
+   <script src="{{ asset('js/maxbootstrap.js')}}"></script>
+   <script src="{{ asset('js/maxbootstrap.js')}}"></script>
+    <script src="{{ asset('translate/jquery.js')}}"></script>
+     <script src="{{ asset('translate/script.js')}}"></script>
+      <script src="{{ asset('translate/scriptCryllic.js')}}"></script>
+</head>
+<body>
+<nav class="navbar navbar-inverse ">
+  <div class="container-fluid">
+      <div class="navbar-header">
+       <a class="navbar-brand" href="#">Кирилл-Монгол бичгийн хөрвүүлэгч</a>
+      </div>
+  </div>
+</nav>
+ 
+  <p id="demo"></p>
+    <script> 
+$(function(){
+
+    $("#h-translate").click(function(){
+  var xhttp = new XMLHttpRequest();
+  xhttp.onreadystatechange = function() {
+    if (this.readyState == 4 && this.status == 200) {
+     var  myObj=JSON.parse(this.responseText);
+       document.getElementById("mongol-text").innerHTML = myObj[0].versions[0].word;
+     console.log( this.responseText);
+    }
+  };
+  xhttp.open("GET", "test6.json", true);
+  xhttp.send();
+    });
+});
+
+</script>
+
+   <div class="row">
+   <div class="col-md-12" style="margin-top: 10px; margin-left:18px;" >
+       <button type="button" class="btn btn-success btn-responsive" style="">Кирилл
+       <span class="glyphicon glyphicon-hand-right"></span> Монгол бичиг</button>
+       <button type="button" id="h-translate" class="btn btn-primary btn-responsive">Хөрвүүл</button>  
+    <img id="loadingButton" src="{{ asset('slides/ajax-loader.gif')}}" align="absmiddle"/>
+
+    </div>
+    </div>
+ 
+ <div class="row">
+  <div class="col-md-6">
+ <div class="nav nav-tabs" style="margin-top:10px; margin-left:18px;">
+    <p>Кирилл бичиг</p>
+      
+   <div class="col-md-3" style="margin-top:-30px; margin-left:500px;">
+       <p>Үгийн тоо:100/1</p>
+    </div> 
+  
+        <textarea rows="10" cols="85" maxlength="100"></textarea>
+    </div>
+   </div>
+
+  <div class="col-md-6">
+    <div class="nav nav-tabs" style="margin-top:10px; margin-left:18px;">
+   <p>Монгол бичиг</p>
+     <div class="col-md-3" style="margin-top:-30px; margin-left:530px;">
+       <button type="button" class="btn btn-link " style="">
+       <span class="glyphicon glyphicon-download"></span> Татах</button>
+       
+    </div> 
+      <div id="mongol-target">
+            <div id="mongol-text" class="msStyle"></div>
+        </div>
+        <div id="menuContainer" class="menuContainer mongolscriptMenu"></div>
+        <div class="word-info" id="wordExp">word info goes here</div>
+        
+    
+  </div>
+  </div> 
+
+    
+ </div>      
+</br>
+
+<footer id="footer" style="margin-top:179px;">
+            <div class="footer-top" >
+           <div class="text-center">
+                Copyright 2017 ©  <br />
+                Вэб сайтыг:  <a target="_blank" href="">Оюутан</a>
+          </div>
+            </div>
+            
+        </footer>
+            
+
+</body>
+</html>
